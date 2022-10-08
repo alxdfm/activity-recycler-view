@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.recyclerviewativ.adapter.PostAdapter;
 import com.example.recyclerviewativ.adapter.TodoAdapter;
 import com.example.recyclerviewativ.presenter.TodoPresenter;
 
@@ -18,7 +20,7 @@ public class TodoActivity extends AppCompatActivity implements Response.ErrorLis
   RecyclerView recyclerView;
   LinearLayoutManager layoutManager;
   TodoAdapter adapter;
-  TodoPresenter TodoPresenter = null;
+  TodoPresenter todoPresenter = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +28,17 @@ public class TodoActivity extends AppCompatActivity implements Response.ErrorLis
     setContentView(R.layout.activity_todo);
 
     Context context = getApplicationContext();
-    TodoPresenter = new TodoPresenter();
-    TodoPresenter.makeRequest(context);
+    todoPresenter = new TodoPresenter();
+    todoPresenter.makeRequest(context);
 
 
     recyclerView = findViewById(R.id.recyclerView);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
-    adapter = new TodoAdapter(TodoPresenter.exportTodo());
+  }
+
+  public void onCLick(View view){
+    adapter = new TodoAdapter(todoPresenter.exportTodo());
     recyclerView.setAdapter(adapter);
   }
 

@@ -15,10 +15,10 @@ import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
-  List<Post> PostsList;
+  List<Post> postsList;
 
-  public PostAdapter(List<Post> PostsList) {
-    this.PostsList = PostsList;
+  public PostAdapter(List<Post> postsList) {
+    this.postsList = postsList;
   }
 
   @NonNull
@@ -31,13 +31,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
   @Override
   public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
-    holder.id.setText(PostsList.get(position).getId());
-    holder.prop.setText(PostsList.get(position).getTitle());
+    holder.id.setText(postsList.get(position).getId());
+    holder.prop.setText(postsList.get(position).getTitle());
   }
 
   @Override
   public int getItemCount() {
-    return PostsList.size();
+    return postsList.size();
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder{

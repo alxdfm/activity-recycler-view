@@ -30,7 +30,7 @@ public class Comment {
     return comments;
   }
 
-  public void addComment(Comment Comment){
-    comments.add(Comment);
+  public void addComment(Comment comment){
+    comments.add(comment);
   }
 }

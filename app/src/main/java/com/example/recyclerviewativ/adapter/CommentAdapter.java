@@ -15,10 +15,10 @@ import java.util.List;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder>{
 
-  List<Comment> CommentsList;
+  List<Comment> commentsList;
 
-  public CommentAdapter(List<Comment> CommentsList) {
-    this.CommentsList = CommentsList;
+  public CommentAdapter(List<Comment> commentsList) {
+    this.commentsList = commentsList;
   }
 
   @NonNull
@@ -31,13 +31,13 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
   @Override
   public void onBindViewHolder(@NonNull CommentAdapter.ViewHolder holder, int position) {
-    holder.id.setText(CommentsList.get(position).getId());
-    holder.prop.setText(CommentsList.get(position).getName());
+    holder.id.setText(commentsList.get(position).getId());
+    holder.prop.setText(commentsList.get(position).getName());
   }
 
   @Override
   public int getItemCount() {
-    return CommentsList.size();
+    return commentsList.size();
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder{

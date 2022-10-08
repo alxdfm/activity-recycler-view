@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,23 +19,24 @@ public class PhotoActivity extends AppCompatActivity implements Response.ErrorLi
   RecyclerView recyclerView;
   LinearLayoutManager layoutManager;
   PhotoAdapter adapter;
-  PhotoPresenter PhotoPresenter = null;
+  PhotoPresenter photoPresenter = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_photo);
 
-    PhotoPresenter = new PhotoPresenter();
-
+    photoPresenter = new PhotoPresenter();
     Context context = getApplicationContext();
-    PhotoPresenter.makeRequest(context);
+    photoPresenter.makeRequest(context);
 
     recyclerView = findViewById(R.id.recyclerView);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
+  }
 
-    adapter = new PhotoAdapter(PhotoPresenter.exportPhoto());
+  public void onCLick(View view){
+    adapter = new PhotoAdapter(photoPresenter.exportPhoto());
     recyclerView.setAdapter(adapter);
   }
 

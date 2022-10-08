@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,7 +19,7 @@ public class PostActivity extends AppCompatActivity implements Response.ErrorLis
   RecyclerView recyclerView;
   LinearLayoutManager layoutManager;
   PostAdapter adapter;
-  PostPresenter PostPresenter = null;
+  PostPresenter postPresenter = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +27,16 @@ public class PostActivity extends AppCompatActivity implements Response.ErrorLis
     setContentView(R.layout.activity_post);
 
     Context context = getApplicationContext();
-    PostPresenter = new PostPresenter();
-    PostPresenter.makeRequest(context);
-
+    postPresenter = new PostPresenter();
+    postPresenter.makeRequest(context);
 
     recyclerView = findViewById(R.id.recyclerView);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
-    adapter = new PostAdapter(PostPresenter.exportPost());
+  }
+
+  public void onCLick(View view){
+    adapter = new PostAdapter(postPresenter.exportPost());
     recyclerView.setAdapter(adapter);
   }
 

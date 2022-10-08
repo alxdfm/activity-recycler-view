@@ -14,13 +14,13 @@ import java.util.List;
 
 public class TodoPresenter {
 
-  Todo Todo = new Todo();
+  Todo todo = new Todo();
 
   public TodoPresenter() {
   }
 
   public void makeRequest(Context context) {
-    String url = "https://jsonplaceholder.typicode.com/Todos";
+    String url = "https://jsonplaceholder.typicode.com/todos";
     RequestQueue requestQueue = Volley.newRequestQueue(context);
 
     JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -34,7 +34,7 @@ public class TodoPresenter {
               JSONObject json = response.getJSONObject(i);
               String id = json.getString("id");
               String title = json.getString("title");
-              Todo.addTodo(new Todo(id, title));
+              todo.addTodo(new Todo(id, title));
             }catch (Exception e) {
               e.printStackTrace();
             }
@@ -48,6 +48,6 @@ public class TodoPresenter {
   }
 
   public List<Todo> exportTodo(){
-    return Todo.getTodos();
+    return todo.getTodos();
   }
 }

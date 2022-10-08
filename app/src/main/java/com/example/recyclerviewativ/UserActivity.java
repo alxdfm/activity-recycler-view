@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.recyclerviewativ.adapter.TodoAdapter;
 import com.example.recyclerviewativ.adapter.UserAdapter;
 import com.example.recyclerviewativ.presenter.UserPresenter;
 
@@ -34,6 +35,9 @@ public class UserActivity extends AppCompatActivity implements Response.ErrorLis
     recyclerView = findViewById(R.id.recyclerView);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
+  }
+
+  public void onCLick(View view){
     adapter = new UserAdapter(userPresenter.exportUser());
     recyclerView.setAdapter(adapter);
   }

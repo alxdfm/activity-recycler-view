@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -32,6 +33,9 @@ public class AlbumActivity extends AppCompatActivity implements Response.ErrorLi
     recyclerView = findViewById(R.id.recyclerView);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
+  }
+
+  public void onCLick(View view){
     adapter = new AlbumAdapter(albumPresenter.exportAlbum());
     recyclerView.setAdapter(adapter);
   }

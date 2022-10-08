@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.recyclerviewativ.adapter.AlbumAdapter;
 import com.example.recyclerviewativ.adapter.CommentAdapter;
 import com.example.recyclerviewativ.presenter.CommentPresenter;
 
@@ -18,7 +20,7 @@ public class CommentActivity extends AppCompatActivity implements Response.Error
   RecyclerView recyclerView;
   LinearLayoutManager layoutManager;
   CommentAdapter adapter;
-  CommentPresenter CommentPresenter = null;
+  CommentPresenter commentPresenter = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +28,16 @@ public class CommentActivity extends AppCompatActivity implements Response.Error
     setContentView(R.layout.activity_comment);
 
     Context context = getApplicationContext();
-    CommentPresenter = new CommentPresenter();
-    CommentPresenter.makeRequest(context);
-
+    commentPresenter = new CommentPresenter();
+    commentPresenter.makeRequest(context);
 
     recyclerView = findViewById(R.id.recyclerView);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
-    adapter = new CommentAdapter(CommentPresenter.exportComment());
+  }
+
+  public void onCLick(View view){
+    adapter = new CommentAdapter(commentPresenter.exportComment());
     recyclerView.setAdapter(adapter);
   }
 

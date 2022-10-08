@@ -15,10 +15,10 @@ import java.util.List;
 
 public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder>{
 
-  List<Todo> TodosList;
+  List<Todo> todosList;
 
-  public TodoAdapter(List<Todo> TodosList) {
-    this.TodosList = TodosList;
+  public TodoAdapter(List<Todo> todosList) {
+    this.todosList = todosList;
   }
 
   @NonNull
@@ -31,13 +31,13 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder>{
 
   @Override
   public void onBindViewHolder(@NonNull TodoAdapter.ViewHolder holder, int position) {
-    holder.id.setText(TodosList.get(position).getId());
-    holder.prop.setText(TodosList.get(position).getTitle());
+    holder.id.setText(todosList.get(position).getId());
+    holder.prop.setText(todosList.get(position).getTitle());
   }
 
   @Override
   public int getItemCount() {
-    return TodosList.size();
+    return todosList.size();
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder{

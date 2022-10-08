@@ -14,13 +14,13 @@ import java.util.List;
 
 public class PostPresenter {
 
-  Post Post = new Post();
+  Post post = new Post();
 
   public PostPresenter() {
   }
 
   public void makeRequest(Context context) {
-    String url = "https://jsonplaceholder.typicode.com/Posts";
+    String url = "https://jsonplaceholder.typicode.com/posts";
     RequestQueue requestQueue = Volley.newRequestQueue(context);
 
     JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -34,7 +34,7 @@ public class PostPresenter {
               JSONObject json = response.getJSONObject(i);
               String id = json.getString("id");
               String title = json.getString("title");
-              Post.addPost(new Post(id, title));
+              post.addPost(new Post(id, title));
             }catch (Exception e) {
               e.printStackTrace();
             }
@@ -48,6 +48,6 @@ public class PostPresenter {
   }
 
   public List<Post> exportPost(){
-    return Post.getPosts();
+    return post.getPosts();
   }
 }

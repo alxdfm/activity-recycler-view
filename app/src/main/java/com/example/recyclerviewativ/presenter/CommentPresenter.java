@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CommentPresenter{
 
-  Comment Comment = new Comment();
+  Comment comment = new Comment();
 
   public CommentPresenter() {
   }
@@ -34,7 +34,7 @@ public class CommentPresenter{
               JSONObject json = response.getJSONObject(i);
               String id = json.getString("id");
               String name = json.getString("name");
-              Comment.addComment(new Comment(id, name));
+              comment.addComment(new Comment(id, name));
             }catch (Exception e) {
               e.printStackTrace();
             }
@@ -48,6 +48,6 @@ public class CommentPresenter{
   }
 
   public List<Comment> exportComment(){
-    return Comment.getComments();
+    return comment.getComments();
   }
 }
